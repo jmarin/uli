@@ -57,12 +57,18 @@ fn loan_id_valid_length(loan_id: &str) -> bool {
     count >= 21 && count <= 43
 }
 
+fn calculate_mod(i: i128) -> i128 {
+    i % 97
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     lazy_static! {
         static ref ULI: String = String::from("10Bx939c5543TqA1144M999143X38");
+        static ref LOAN_ID: String = String::from("10Bx939c5543TqA1144M999143X");
+        static ref SHORT_STRING: String = String::from("aaa");
     }
 
     #[test]
@@ -72,25 +78,26 @@ mod tests {
         assert_eq!(CONVERSION_TABLE.get(&"Z").unwrap(), &35);
     }
 
-        #[test]
-        fn test_is_alphanumeric() {
-            assert_eq!(is_alphanumeric(&ULI), true);
-        }
+    #[test]
+    fn test_is_alphanumeric() {
+        assert_eq!(is_alphanumeric(&ULI), true);
+    }
 
     #[test]
     fn test_uli_valid_length() {
         assert_eq!(uli_valid_length(&ULI), true);
-
-        let bad_uli = String::from("aaa");
-        assert_eq!(uli_valid_length(&bad_uli), false);
+        assert_eq!(uli_valid_length(&SHORT_STRING), false);
     }
 
+    #[test]
     fn test_loan_id_valid_length() {
-        let loan_id = "10Bx939c5543TqA1144M999143X";
-        assert_eq!(loan_id_valid_length(loan_id), true);
+        assert_eq!(loan_id_valid_length(&LOAN_ID), true);
+        assert_eq!(loan_id_valid_length(&SHORT_STRING), false);
+    }
 
-        let bad_loan_id = String::from("aaa");
-        assert_eq!(loan_id_valid_length(&bad_loan_id), false);
+    #[test]
+    fn test_calculate_mod() {
+        assert_eq!(calculate_mod(1011339391255432926101144229991433300), 60);
     }
 
 }
