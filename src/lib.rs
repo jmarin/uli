@@ -1,5 +1,3 @@
-// See https://www.consumerfinance.gov/eregulations/1003-C/2015-26607_20180101#1003-C-1
-
 #[macro_use]
 extern crate lazy_static;
 extern crate regex;
@@ -61,6 +59,38 @@ fn calculate_mod(i: i128) -> i128 {
     i % 97
 }
 
+//fn convert(loan_id: &str) -> i128 {
+//    let v = loan_id
+//        .chars()
+//        .map(|c| if (!c.is_numeric()) {
+//            CONVERSION_TABLE.get::<str>(&c.to_string());
+//        } else {
+//             c.to_string()
+//        }
+//     };
+//
+//    println!("{:?}", v);
+//
+//    loan_id.parse::<i128>().unwrap()
+//}
+
+fn convert_to_int(s: &str) -> String {
+    let num = s.parse::<i128>();
+    match num {
+        Ok(i) => i.to_string(),
+        Err(error) => CONVERSION_TABLE
+            .get::<str>(&s.to_string())
+            .unwrap()
+            .to_string(),
+    }
+}
+
+fn convert(text: &str) -> String {
+    let v: Vec<String> = text.chars().map(|c| c.to_string()).collect();
+    let m: Vec<String> = v.iter().map(|s| convert_to_int(&s)).collect();
+    m.join("")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -98,6 +128,12 @@ mod tests {
     #[test]
     fn test_calculate_mod() {
         assert_eq!(calculate_mod(1011339391255432926101144229991433300), 60);
+    }
+
+    #[test]
+    fn test_convert() {
+        let string = String::from("A11");
+        assert_eq!(convert(&string), "1011");
     }
 
 }
