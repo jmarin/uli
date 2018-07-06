@@ -38,6 +38,26 @@ lazy_static! {
     };
 }
 
+pub fn generate_uli(loan_id: &str) -> Result<String, String> {
+    let c = check_digit(loan_id);
+    match c {
+        Ok(s) => Ok(loan_id.to_owned() + &s),
+        Err(error) => Err(error),
+    }
+}
+
+pub fn check_digit(loan_id: &str) -> Result<String, String> {
+    if (!loan_id_valid_length(loan_id)) {
+        Err(String::from("Invalid loan id length"))
+    } else if (!is_alphanumeric(loan_id)) {
+        Err(String::from("Loan id not alphanumeric"))
+    } else {
+        let m = calculate_mod(convert(loan_id) * 1000);
+        let cd = calculate_check_digit(&m);
+        Ok(string_length_two(cd))
+    }
+}
+
 fn is_alphanumeric(text: &str) -> bool {
     lazy_static! {
         static ref RE: Regex = Regex::new(r"^[a-zA-Z0-9]+$").unwrap();
@@ -74,6 +94,10 @@ fn convert(text: &str) -> i128 {
     let v: Vec<String> = text.chars().map(|c| c.to_string()).collect();
     let m: Vec<String> = v.iter().map(|s| convert_to_int(&s)).collect();
     m.join("").parse::<i128>().unwrap()
+}
+
+fn calculate_check_digit(i: &i128) -> i128 {
+    98 - i
 }
 
 fn string_length_two(n: i128) -> String {
