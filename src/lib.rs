@@ -70,10 +70,10 @@ fn convert_to_int(s: &str) -> String {
     }
 }
 
-fn convert(text: &str) -> String {
+fn convert(text: &str) -> i128 {
     let v: Vec<String> = text.chars().map(|c| c.to_string()).collect();
     let m: Vec<String> = v.iter().map(|s| convert_to_int(&s)).collect();
-    m.join("")
+    m.join("").parse::<i128>().unwrap()
 }
 
 #[cfg(test)]
@@ -118,7 +118,7 @@ mod tests {
     #[test]
     fn test_convert() {
         let string = String::from("A11");
-        assert_eq!(convert(&string), "1011");
+        assert_eq!(convert(&string), 1011);
     }
 
 }
