@@ -76,6 +76,14 @@ fn convert(text: &str) -> i128 {
     m.join("").parse::<i128>().unwrap()
 }
 
+fn string_length_two(n: i128) -> String {
+    if (n <= 9 && n >= 0) {
+        "0".to_owned() + &n.to_string()
+    } else {
+        n.to_string()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -119,6 +127,14 @@ mod tests {
     fn test_convert() {
         let string = String::from("A11");
         assert_eq!(convert(&string), 1011);
+    }
+
+    #[test]
+    fn test_string_length_two() {
+        let i = 1;
+        let i2 = 11;
+        assert_eq!(string_length_two(i), "01");
+        assert_eq!(string_length_two(i2), "11");
     }
 
 }
