@@ -2,7 +2,9 @@
 
 #[macro_use]
 extern crate lazy_static;
+//extern crate regex;
 
+//use regex::Regex;
 use std::collections::HashMap;
 
 lazy_static! {
@@ -38,6 +40,13 @@ lazy_static! {
     };
 }
 
+//fn is_alphanumeric(text: &str) -> bool {
+//    lazy_static! {
+//        static ref RE: Regex = Regex::new(r"^[a-zA-Z0-9]+$").unwrap();
+//    }
+//    RE.is_match(text)
+//}
+
 fn uli_valid_length(uli: &str) -> bool {
     let count = uli.chars().count();
     count >= 23 && count <= 45
@@ -52,6 +61,10 @@ fn loan_id_valid_length(loan_id: &str) -> bool {
 mod tests {
     use super::*;
 
+    lazy_static! {
+        static ref ULI: String = String::from("10Bx939c5543TqA1144M999143X38");
+    }
+
     #[test]
     fn test_conversion_table() {
         assert_eq!(CONVERSION_TABLE.get(&"A").unwrap(), &10);
@@ -59,10 +72,14 @@ mod tests {
         assert_eq!(CONVERSION_TABLE.get(&"Z").unwrap(), &35);
     }
 
+    //    #[test]
+    //    fn test_is_alphanumeric() {
+    //        assert_eq!(is_alphanumeric(&ULI), true);
+    //    }
+
     #[test]
     fn test_uli_valid_length() {
-        let uli = String::from("10Bx939c5543TqA1144M999143X38");
-        assert_eq!(uli_valid_length(&uli), true);
+        assert_eq!(uli_valid_length(&ULI), true);
 
         let bad_uli = String::from("aaa");
         assert_eq!(uli_valid_length(&bad_uli), false);
