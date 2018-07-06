@@ -59,21 +59,6 @@ fn calculate_mod(i: i128) -> i128 {
     i % 97
 }
 
-//fn convert(loan_id: &str) -> i128 {
-//    let v = loan_id
-//        .chars()
-//        .map(|c| if (!c.is_numeric()) {
-//            CONVERSION_TABLE.get::<str>(&c.to_string());
-//        } else {
-//             c.to_string()
-//        }
-//     };
-//
-//    println!("{:?}", v);
-//
-//    loan_id.parse::<i128>().unwrap()
-//}
-
 fn convert_to_int(s: &str) -> String {
     let num = s.parse::<i128>();
     match num {
