@@ -2,9 +2,9 @@
 
 #[macro_use]
 extern crate lazy_static;
-//extern crate regex;
+extern crate regex;
 
-//use regex::Regex;
+use regex::Regex;
 use std::collections::HashMap;
 
 lazy_static! {
@@ -40,12 +40,12 @@ lazy_static! {
     };
 }
 
-//fn is_alphanumeric(text: &str) -> bool {
-//    lazy_static! {
-//        static ref RE: Regex = Regex::new(r"^[a-zA-Z0-9]+$").unwrap();
-//    }
-//    RE.is_match(text)
-//}
+fn is_alphanumeric(text: &str) -> bool {
+    lazy_static! {
+        static ref RE: Regex = Regex::new(r"^[a-zA-Z0-9]+$").unwrap();
+    }
+    RE.is_match(text)
+}
 
 fn uli_valid_length(uli: &str) -> bool {
     let count = uli.chars().count();
@@ -72,10 +72,10 @@ mod tests {
         assert_eq!(CONVERSION_TABLE.get(&"Z").unwrap(), &35);
     }
 
-    //    #[test]
-    //    fn test_is_alphanumeric() {
-    //        assert_eq!(is_alphanumeric(&ULI), true);
-    //    }
+        #[test]
+        fn test_is_alphanumeric() {
+            assert_eq!(is_alphanumeric(&ULI), true);
+        }
 
     #[test]
     fn test_uli_valid_length() {
