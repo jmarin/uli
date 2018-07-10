@@ -1,3 +1,5 @@
+//See https://www.consumerfinance.gov/eregulations/1003-C/2015-26607_20180101#1003-C-1
+
 #[macro_use]
 extern crate lazy_static;
 extern crate regex;
@@ -91,7 +93,7 @@ fn convert_to_int(s: &str) -> String {
 }
 
 fn convert(text: &str) -> i128 {
-    let v: Vec<String> = text.chars().map(|c| c.to_string()).collect();
+    let v: Vec<String> = text.chars().map(|c| c.to_string()).map(|c| c.to_uppercase()).collect();
     let m: Vec<String> = v.iter().map(|s| convert_to_int(&s)).collect();
     m.join("").parse::<i128>().unwrap()
 }
@@ -149,8 +151,7 @@ mod tests {
 
     #[test]
     fn test_convert() {
-        let string = String::from("A11");
-        assert_eq!(convert(&string), 1011);
+        assert_eq!(convert(&LOAN_ID), 10113393912554329261011442299914333);
     }
 
     #[test]
