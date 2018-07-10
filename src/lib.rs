@@ -40,6 +40,16 @@ lazy_static! {
     };
 }
 
+pub fn validate_uli(uli: &str) -> Result<bool, String> {
+   if !is_alphanumeric(uli) {
+        Err(String::from("ULI is not alphanumeric"))
+    } else if !uli_valid_length(uli) {
+        Err(String::from("ULI does not have valid length")) 
+    } else {
+      Ok(calculate_mod(convert(uli)) == 1)    
+    }  
+}
+
 pub fn generate_uli(loan_id: &str) -> Result<String, String> {
     let c = check_digit(loan_id);
     match c {
@@ -130,6 +140,11 @@ mod tests {
     #[test]
     fn test_check_digit() {
       assert_eq!(check_digit(&LOAN_ID), Ok(String::from("38")));    
+    }
+
+    #[test]
+    fn test_validate_uli() {
+        assert_eq!(validate_uli(&ULI), Ok(true));    
     }
 
     #[test]
