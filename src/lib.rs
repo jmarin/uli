@@ -54,7 +54,7 @@ pub fn check_digit(loan_id: &str) -> Result<String, String> {
     } else if (!is_alphanumeric(loan_id)) {
         Err(String::from("Loan id not alphanumeric"))
     } else {
-        let m = calculate_mod(convert(loan_id) * 1000);
+        let m = calculate_mod(convert(loan_id) * 100);
         let cd = calculate_check_digit(&m);
         Ok(string_length_two(cd))
     }
@@ -125,6 +125,11 @@ mod tests {
         assert_eq!(CONVERSION_TABLE.get(&"A").unwrap(), &10);
         assert_eq!(CONVERSION_TABLE.get(&"M").unwrap(), &22);
         assert_eq!(CONVERSION_TABLE.get(&"Z").unwrap(), &35);
+    }
+
+    #[test]
+    fn test_check_digit() {
+      assert_eq!(check_digit(&LOAN_ID), Ok(String::from("38")));    
     }
 
     #[test]
