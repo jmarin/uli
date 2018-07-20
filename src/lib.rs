@@ -59,9 +59,9 @@ pub fn generate_uli(loan_id: &str) -> Result<String, String> {
 }
 
 pub fn check_digit(loan_id: &str) -> Result<String, String> {
-    if (!loan_id_valid_length(loan_id)) {
+    if !loan_id_valid_length(loan_id) {
         Err(String::from("Invalid loan id length"))
-    } else if (!is_alphanumeric(loan_id)) {
+    } else if !is_alphanumeric(loan_id) {
         Err(String::from("Loan id not alphanumeric"))
     } else {
         let m = calculate_mod(convert(loan_id) * 100);
