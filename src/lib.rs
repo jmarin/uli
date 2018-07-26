@@ -44,7 +44,7 @@ pub fn validate_uli(uli: &str) -> Result<bool, String> {
     if !is_alphanumeric(uli) {
         Err(String::from("ULI is not alphanumeric"))
     } else if !uli_valid_length(uli) {
-        Err(String::from("ULI does not have valid length"))
+        Err(String::from("ULI does not have valid length, must be between 23 and 45 characters"))
     } else {
         Ok(calculate_mod(convert(uli)) == 1)
     }
