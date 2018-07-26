@@ -95,7 +95,7 @@ fn convert_to_int(s: &str) -> String {
     let num = s.parse::<i128>();
     match num {
         Ok(i) => i.to_string(),
-        Err(error) => CONVERSION_TABLE
+        Err(_) => CONVERSION_TABLE
             .get::<str>(&s.to_string())
             .unwrap()
             .to_string(),
