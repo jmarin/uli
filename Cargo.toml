@@ -3,6 +3,18 @@ name = "uli"
 version = "0.1.0"
 authors = ["Juan Marin Otero <juan.marin.otero@gmail.com>"]
 
+[lib]
+name = "uli_lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "uli"
+path = "src/bin/uli.rs"
+
+[[bin]]
+name = "uli-server"
+path = "src/bin/uli-server.rs"
+
 [dependencies]
 lazy_static = "1.0.2"
 regex = "1.0.2"
