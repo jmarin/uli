@@ -116,7 +116,7 @@ fn calculate_check_digit(i: &i128) -> i128 {
 }
 
 fn string_length_two(n: i128) -> String {
-    if (n <= 9 && n >= 0) {
+    if n <= 9 && n >= 0 {
         "0".to_owned() + &n.to_string()
     } else {
         n.to_string()
