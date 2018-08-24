@@ -1,3 +1,3 @@
 fn main() {
-  println!("ULI Check Digit server");    
+    println!("ULI Check Digit server");
 }

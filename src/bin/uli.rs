@@ -8,10 +8,9 @@ use uli_lib::validate_uli;
 #[derive(StructOpt, Debug)]
 #[structopt(name = "uli")]
 struct Opt {
-   #[structopt(long = "validate")]
-   uli: String,
+    #[structopt(long = "validate")]
+    uli: String,
 }
-
 
 fn main() {
     let opt = Opt::from_args();

@@ -44,7 +44,9 @@ pub fn validate_uli(uli: &str) -> Result<bool, String> {
     if !is_alphanumeric(uli) {
         Err(String::from("ULI is not alphanumeric"))
     } else if !uli_valid_length(uli) {
-        Err(String::from("ULI does not have valid length, must be between 23 and 45 characters"))
+        Err(String::from(
+            "ULI does not have valid length, must be between 23 and 45 characters",
+        ))
     } else {
         Ok(calculate_mod(convert(uli)) == 1)
     }
@@ -103,7 +105,8 @@ fn convert_to_int(s: &str) -> String {
 }
 
 fn convert(text: &str) -> i128 {
-    let v: Vec<String> = text.chars()
+    let v: Vec<String> = text
+        .chars()
         .map(|c| c.to_string())
         .map(|c| c.to_uppercase())
         .collect();
