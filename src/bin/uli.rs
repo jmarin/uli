@@ -21,7 +21,11 @@ fn main() {
     if uli_length > 0 {
         let uli_check = validate_uli(&uli);
         match uli_check {
-            Ok(valid) => println!("{}", valid),
+            Ok(is_valid) => //println!("{}", valid),
+                match is_valid {
+                  true => println!("ULI {} is valid", &uli),    
+                  false => println!("ULI {} is not valid", &uli),  
+                }
             Err(error) => println!("{}", error),
         }
     }
