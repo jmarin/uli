@@ -12,7 +12,7 @@ To validate a ULI:
 uli validate <uli>
 ```
 
-To generate a check digit:
+To generate a check digit (COMING SOON):
 ```shell
 uli check-digit <loan_id>
 ```
