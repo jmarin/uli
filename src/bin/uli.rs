@@ -1,4 +1,3 @@
-#[macro_use]
 extern crate structopt;
 extern crate uli_lib;
 
@@ -8,8 +7,13 @@ use uli_lib::validate_uli;
 #[derive(StructOpt, Debug)]
 #[structopt(name = "uli")]
 struct Opt {
+    /// Validate a Univeral Loan Identifier (ULI)
     #[structopt(long = "validate")]
     uli: String,
+
+    /// Generate Check Digit from Loan ID
+    #[structopt(long = "check-digit")]
+    loan_id: Option<String>,
 }
 
 fn main() {

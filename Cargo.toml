@@ -11,10 +11,6 @@ path = "src/lib.rs"
 name = "uli"
 path = "src/bin/uli.rs"
 
-[[bin]]
-name = "uli-server"
-path = "src/bin/uli-server.rs"
-
 [dependencies]
 lazy_static = "1.0.2"
 regex = "1.0.2"
