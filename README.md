@@ -9,7 +9,7 @@ To validate a ULI:
 uli --validate 10Bx939c5543TqA1144M999143X38
 ```
 
-THe output of this command should be `ULI 10Bx939c5543TqA1144M999143X38 is valid`
+The output of this command should be `ULI 10Bx939c5543TqA1144M999143X38 is valid`
 
 To generate a check digit (COMING SOON):
 ```shell
