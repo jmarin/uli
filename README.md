@@ -3,6 +3,15 @@ Universal Loan Identifier (ULI) validation and check digit generation for the Ho
 
 ## Installing
 
+If you have a `rust` development environment, from the root directory of the project: 
+
+```shell
+cargo build --release
+cargo install --path .
+```
+
+If you are on Mac OS X:
+
 ```shell
 brew tap jmarin/uli
 ```
