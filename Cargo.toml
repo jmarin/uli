@@ -1,6 +1,6 @@
 [package]
 name = "uli"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Juan Marin Otero <juan.marin.otero@gmail.com>"]
 edition = "2018"
 
