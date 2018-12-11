@@ -1,6 +1,16 @@
 # uli
 Universal Loan Identifier (ULI) validation and check digit generation for the Home Mortgage Disclosure Act (HMDA). Procedure for generating and validating described [here](https://www.consumerfinance.gov/eregulations/1003-C/2015-26607_20200101#1003-C-1<Paste>)
 
+## Installing
+
+```shell
+brew tap jmarin/uli
+```
+
+```shell
+brew install jmarin/uli/uli
+```
+
 ## Using
 
 To validate a ULI: 
