@@ -2,6 +2,7 @@
 name = "uli"
 version = "0.1.0"
 authors = ["Juan Marin Otero <juan.marin.otero@gmail.com>"]
+edition = "2018"
 
 [lib]
 name = "uli_lib"
